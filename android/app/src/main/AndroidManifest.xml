@@ -24,7 +24,7 @@
     </queries>
     <application
         android:enableOnBackInvokedCallback="true"
-        android:label="CAS"
+        android:label="Safety Assistant"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon"
         tools:ignore="UnusedAttribute">
