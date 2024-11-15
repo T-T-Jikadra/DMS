@@ -37,6 +37,7 @@ class _CitizenSignupPageScreenState extends State<CitizenSignupPageScreen> {
 
   TextEditingController fnameTextController = TextEditingController();
   TextEditingController lnameTextController = TextEditingController();
+  TextEditingController phoneTextController = TextEditingController();
   TextEditingController pinCodeTextController = TextEditingController();
   TextEditingController fullAddressTextController = TextEditingController();
   TextEditingController birthDateTextController = TextEditingController();
@@ -275,7 +276,7 @@ class _CitizenSignupPageScreenState extends State<CitizenSignupPageScreen> {
                               initialValue: widget.contactNumber,
                               enabled: false,
                               maxLength: 13,
-                              //controller: phoneTextController,
+                              controller: phoneTextController,
                               decoration: InputDecoration(
                                 //prefixText: "+91 ",
                                 hintText: "Enter your Mobile number",
@@ -614,17 +615,23 @@ class _CitizenSignupPageScreenState extends State<CitizenSignupPageScreen> {
                                   // }
                                   //for id
                                   int totalDocCount = 0;
-                                  await FirebaseFirestore.instance.runTransaction((transaction) async {
+                                  await FirebaseFirestore.instance
+                                      .runTransaction((transaction) async {
                                     // Get the current count of requests
-                                    DocumentSnapshot snapshot = await transaction.get(FirebaseFirestore
-                                        .instance
-                                        .collection("clc_citizen")
-                                        .doc("citizen_count"));
-                                    totalDocCount = (snapshot.exists) ? snapshot.get('count') : 0;
+                                    DocumentSnapshot snapshot =
+                                        await transaction.get(FirebaseFirestore
+                                            .instance
+                                            .collection("clc_citizen")
+                                            .doc("citizen_count"));
+                                    totalDocCount = (snapshot.exists)
+                                        ? snapshot.get('count')
+                                        : 0;
                                     totalDocCount++;
 
                                     transaction.set(
-                                        FirebaseFirestore.instance.collection("clc_citizen").doc("citizen_count"),
+                                        FirebaseFirestore.instance
+                                            .collection("clc_citizen")
+                                            .doc("citizen_count"),
                                         {'count': totalDocCount});
                                   });
 
@@ -673,7 +680,9 @@ class _CitizenSignupPageScreenState extends State<CitizenSignupPageScreen> {
                                       PageRouteBuilder(
                                         pageBuilder: (context, animation,
                                                 secondaryAnimation) =>
-                                            const CitizenHomeScreen(),
+                                            CitizenHomeScreen(
+                                                contact:
+                                                    phoneTextController.text),
                                         transitionsBuilder: (context, animation,
                                             secondaryAnimation, child) {
                                           var begin = const Offset(1.0, 0.0);

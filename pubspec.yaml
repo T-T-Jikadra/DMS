@@ -45,8 +45,7 @@ dependencies:
   # FCM
   firebase_messaging: ^14.7.18
   app_settings: ^4.1.0
-  flutter_local_notifications: ^16.3.3
-
+  flutter_local_notifications: ^18.0.1
   #for sending msg as req - response
   http:
 
@@ -100,8 +99,8 @@ dependencies:
   firebase_storage: ^11.6.9
   #razorpay_flutter:
 
-  carousel_slider: ^4.2.1
-
+  carousel_slider: ^5.0.0
+  win32: ^5.8.0
 
 
 flutter_launcher_icons:

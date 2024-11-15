@@ -149,7 +149,9 @@ class _OtpScreenState extends State<OtpScreen> {
                               borderRadius: BorderRadius.circular(50),
                               child: ElevatedButton(
                                   onPressed: () {
-                                    verifyOtp(); // Verify OTP
+                                    Get.offAll(() => CitizenHomeScreen(
+                                        contact: widget._contact));
+                                    // verifyOtp(); // Verify OTP
                                   },
                                   child: const Text("Verify .."))),
                         )
@@ -244,7 +246,7 @@ class _OtpScreenState extends State<OtpScreen> {
       if (isUserRegOrNot) {
         showToastMsg("Citizen logged in successfully..");
 
-        Get.offAll(() => const CitizenHomeScreen());
+        Get.offAll(() => CitizenHomeScreen(contact: widget._contact));
       } else {
         showToastMsg("Complete your profile first ..");
         Get.offAll(

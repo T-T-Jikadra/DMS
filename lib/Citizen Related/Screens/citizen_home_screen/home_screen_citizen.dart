@@ -25,8 +25,11 @@ import 'menu.dart';
 // }
 
 class CitizenHomeScreen extends StatefulWidget {
-  const CitizenHomeScreen({super.key});
+  var xContact;
 
+  CitizenHomeScreen({Key? mykey, contact}) : super(key: mykey) {
+    xContact = contact;
+  }
   @override
   State<CitizenHomeScreen> createState() => _CitizenHomeScreenState();
 }
@@ -117,7 +120,9 @@ class _CitizenHomeScreenState extends State<CitizenHomeScreen>
                   left: isSideBarOpen ? 0 : -288,
                   top: 0,
                   // DRAWER
-                  child: const SideBar(),
+                  child: SideBar(
+                    contact: widget.xContact,
+                  ),
                 ),
                 //To show the moving background
                 Transform(
@@ -130,12 +135,14 @@ class _CitizenHomeScreenState extends State<CitizenHomeScreen>
                     offset: Offset(animation.value * 265, 0),
                     child: Transform.scale(
                       scale: scalAnimation.value,
-                      child: const ClipRRect(
+                      child: ClipRRect(
                         borderRadius: BorderRadius.all(
                           Radius.circular(24),
                         ),
                         //  HOME SCREEN
-                        child: commonbg(),
+                        child: commonbg(
+                          contact: widget.xContact,
+                        ),
                       ),
                     ),
                   ),

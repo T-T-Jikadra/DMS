@@ -36,7 +36,7 @@ class splash extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/otpScreen': (BuildContext ctx) => OtpScreen(),
         '/liquidpages': (BuildContext ctx) => const Onboarding_Screen(),
-        '/homeScreen': (BuildContext ctx) => const CitizenHomeScreen(),
+        '/homeScreen': (BuildContext ctx) =>  CitizenHomeScreen(),
         '/GovtHomeScreen': (BuildContext ctx) => const GovtHomeScreen(),
         '/NGOHomeScreen': (BuildContext ctx) => const NGOHomeScreen(),
       },
@@ -211,7 +211,7 @@ class _SplashScreenState extends State<SplashScreen> {
           print(phone);
         }
         // Navigate to Citizen screen
-        Get.offAll(() => const CitizenHomeScreen());
+        Get.offAll(() =>  CitizenHomeScreen());
       }
     } else {
       Get.offAll(() => const Onboarding_Screen());
@@ -248,7 +248,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const CitizenHomeScreen(),
+              builder: (context) =>  CitizenHomeScreen(),
             ));
         //CitizenHomeScreen
       }

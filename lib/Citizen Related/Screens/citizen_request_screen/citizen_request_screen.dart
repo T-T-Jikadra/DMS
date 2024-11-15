@@ -16,7 +16,10 @@ import '../../../Components/Notification_related/notification_services.dart';
 import 'package:http/http.dart' as http;
 
 class userRequest_Screen extends StatefulWidget {
-  const userRequest_Screen({super.key});
+  var xContact;
+  userRequest_Screen({Key? mykey, contact}) : super(key: mykey) {
+    contact = xContact;
+  }
 
   @override
   State<userRequest_Screen> createState() => _userRequest_ScreenState();
@@ -61,6 +64,7 @@ class _userRequest_ScreenState extends State<userRequest_Screen> {
     notificationServices.getDeviceToken().then((value) {
       if (kDebugMode) {
         print("token : ${value.toString()}");
+        print(widget.xContact);
       }
       senderDeviceToken = value.toString();
     });
@@ -495,11 +499,13 @@ class _userRequest_ScreenState extends State<userRequest_Screen> {
   Future<void> fetchCitizenData() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
+      print("aa");
+      print(widget.xContact);
 
       // Fetch data from Firestore
       DocumentSnapshot citizenSnapshot = await FirebaseFirestore.instance
           .collection('clc_citizen')
-          .doc(user?.phoneNumber)
+          .doc(widget.xContact)
           .get();
 
       // Check if the document exists

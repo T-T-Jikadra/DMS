@@ -1,9 +1,9 @@
 // ignore_for_file: camel_case_types, library_private_types_in_public_api, deprecated_member_use, depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fff/Utils/Utils.dart';
+import 'package:fff/Utils/constants.dart';
 import 'package:flutter/material.dart';
-import '../../../Utils/Utils.dart';
-import '../../../Utils/constants.dart';
 import 'package:intl/intl.dart';
 import 'admin_citizen_details_screen.dart';
 

@@ -12,17 +12,17 @@ class AboutUsScreen extends StatefulWidget {
 }
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
-  bool isLoading = true;
+    bool isLoading = true;
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: 1650)).then((value) {
-      setState(() {
-        isLoading = false;
+    @override
+    void initState() {
+      super.initState();
+      Future.delayed(const Duration(milliseconds: 1650)).then((value) {
+        setState(() {
+          isLoading = false;
+        });
       });
-    });
-  }
+    }
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,10 @@ import '../../../Components/info_card.dart';
 import 'menu.dart';
 
 class SideBar extends StatefulWidget {
-  const SideBar({super.key});
+  var xContact;
+  SideBar({Key? mykey, contact}) : super(key: mykey) {
+    xContact = contact;
+  }
 
   @override
   State<SideBar> createState() => _SideBarState();

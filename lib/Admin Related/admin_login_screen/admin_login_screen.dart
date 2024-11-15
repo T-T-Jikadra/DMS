@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously, camel_case_types
+import 'package:fff/Utils/Utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../Utils/Utils.dart';
 import '../admin_home_screen/home_screen_admin.dart';
 
 class Admin_Login_Screen extends StatefulWidget {

@@ -20,7 +20,11 @@ import '../citizen_helipline_screen.dart';
 import '../citizen_request_screen/citizen_request_screen.dart';
 
 class commonbg extends StatefulWidget {
-  const commonbg({super.key});
+  var xContact;
+
+  commonbg({Key? mykey, contact}) : super(key: mykey) {
+    xContact = contact;
+  }
 
   @override
   State<commonbg> createState() => _commonbgState();
@@ -537,7 +541,8 @@ class _commonbgState extends State<commonbg> {
                                   PageRouteBuilder(
                                     pageBuilder: (context, animation,
                                             secondaryAnimation) =>
-                                        const userRequest_Screen(),
+                                        userRequest_Screen(
+                                            contact: widget.xContact),
                                     transitionsBuilder: (context, animation,
                                         secondaryAnimation, child) {
                                       var begin = const Offset(1.0, 0.0);
@@ -922,12 +927,17 @@ class _commonbgState extends State<commonbg> {
                                       ),
                                     );
                                   } else {
-                                    return  Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         const SizedBox(height: 160),
-                                        Image.asset("assets/images/not_found.png",height: 100,width: 100),
+                                        Image.asset(
+                                            "assets/images/not_found.png",
+                                            height: 100,
+                                            width: 100),
                                         const SizedBox(height: 70),
                                         const Center(
                                           child: Text(
@@ -977,11 +987,12 @@ class _commonbgState extends State<commonbg> {
   Future<void> fetchCitizenData() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-
+print("asasa");
+print(widget.xContact);
       // Fetch data from Firestore
       DocumentSnapshot citizenSnapshot = await FirebaseFirestore.instance
           .collection('clc_citizen')
-          .doc(user?.phoneNumber)
+          .doc(widget.xContact)
           .get();
 
       // Check if the document exists
